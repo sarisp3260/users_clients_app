@@ -17,8 +17,8 @@ export class TableDataComponent implements OnInit {
 
   users: User[] = [];
 
-  selectedUser: User | null = null; // Define una variable para el usuario seleccionado
-  displayDialog: boolean = false; // Controla la visibilidad del modal
+  selectedUser: User | null = null;
+  displayDialog: boolean = false;
 
   constructor(private UserService: UserService ) { }
 
@@ -41,14 +41,14 @@ export class TableDataComponent implements OnInit {
   }
   applyFilter($event: any, field: string, matchMode: string) {
     let value = ($event.target as HTMLInputElement)?.value;
-    if (this.dt) { // Ensure dt is available before filtering
+    if (this.dt) {
       this.dt.filter(value, field, matchMode);
     }
   }
 
   showUserDetails(user: User) {
-    // Guarda el usuario seleccionado y abre el modal
     this.selectedUser = { ...user };
+    console.log(this.selectedUser);
     this.displayDialog = true;
   }
 
@@ -57,4 +57,5 @@ export class TableDataComponent implements OnInit {
       this.displayDialog = false;
       this.selectedUser = null;
   }
+  
 }

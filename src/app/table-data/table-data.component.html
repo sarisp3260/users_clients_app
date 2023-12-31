@@ -4,16 +4,22 @@
         <div class="center gap-2">
           <img src="https://static.thenounproject.com/png/638776-200.png"  class="w-28" alt="user_logo">
           <div class="flex flex-col items-start info text-center">
-            <span><b>Username: </b>{{selectedUser?.username}}</span>
-            <span><b>Phone: </b>{{selectedUser?.phone}}</span>
-            <span><b>Website: </b>{{selectedUser?.website}}</span>
+            <span><i class="fas fa-user pr-3"></i> <b>Username: </b>{{selectedUser?.username}}</span>
+            <span><i class="fas fa-phone pr-3"></i> <b>Phone: </b>{{selectedUser?.phone}}</span>
+            <span><i class="fas fa-globe pr-3"></i> <b>Website: </b>{{selectedUser?.website}}</span>
           </div>
         </div>
-          
+
+        <div class="flex flex-col justify-center items-center py-3 info">
+          <span *ngIf="selectedUser"><i class="fas fa-map-marker-alt pr-3"></i><b>Address: </b>{{selectedUser.address.street}}, {{selectedUser.address.suite}}</span>
+          <span *ngIf="selectedUser"><i class="fas fa-map-marked-alt pr-3"></i> <b>City: </b>{{selectedUser.address.city}}</span>
+          <span *ngIf="selectedUser"><i class="fas fa-building pr-3"></i><b>Company: </b>{{selectedUser.company.name}}</span>
+        </div>
+        <!-- <app-map-geo [geoData]="getGeoData(selectedUser)"></app-map-geo> -->
       </div>
   </div>
   <div class="p-dialog-footer flex justify-center">
-      <button pButton type="button" label="Close" (click)="hideDialog()" class=" bg-emerald-700 p-2 text-white">OK <i class="fas fa-thumbs-up"></i></button>
+      <button pButton type="button" label="Close" (click)="hideDialog()" class=" bg-emerald-700 p-2 mt-3 text-white">OK <i class="fas fa-thumbs-up"></i></button>
   </div>
 </p-dialog>
 
