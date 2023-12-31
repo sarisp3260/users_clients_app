@@ -1,1 +1,94 @@
-<p>table-data works!</p>
+<p-dialog header="User Details" [(visible)]="displayDialog" [modal]="true" [responsive]="true">
+  <div class="p-fluid">
+      <div class="p-field">
+        <div class="center gap-2">
+          <img src="https://static.thenounproject.com/png/638776-200.png"  class="w-28" alt="user_logo">
+          <div class="flex flex-col items-start info text-center">
+            <span><b>Username: </b>{{selectedUser?.username}}</span>
+            <span><b>Phone: </b>{{selectedUser?.phone}}</span>
+            <span><b>Website: </b>{{selectedUser?.website}}</span>
+          </div>
+        </div>
+          
+      </div>
+  </div>
+  <div class="p-dialog-footer flex justify-center">
+      <button pButton type="button" label="Close" (click)="hideDialog()" class=" bg-emerald-700 p-2 text-white">OK <i class="fas fa-thumbs-up"></i></button>
+  </div>
+</p-dialog>
+
+<p-table
+  #dt
+  [value]="users"
+  dataKey="id"
+  [rowHover]="true"
+  [rows]="5"
+  [showCurrentPageReport]="true"
+  [loading]="loading"
+  [paginator]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [filterDelay]="0"
+  [globalFilterFields]="['name']"
+  responsiveLayout="scroll"
+>
+  <ng-template pTemplate="caption">
+    <div class="table-header center ">
+      Customer List
+      <span class="p-input-icon-right">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="applyFilter($event, 'name', 'contains')" placeholder="Search by name" matchMode="contains"/>
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="id" style="min-width: 14rem">
+        Id
+        <p-sortIcon field="id"></p-sortIcon>
+      </th>
+      <th pSortableColumn="box" style="min-width: 14rem">
+        Know more
+        <p-sortIcon field="box"></p-sortIcon>
+      </th>
+      <th pSortableColumn="name" style="min-width: 14rem">
+        Name
+        <p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="company.name" style="min-width: 14rem">
+        Company
+        <p-sortIcon field="company.name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="email" style="min-width: 14rem">
+        Email
+        <p-sortIcon field="email"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-user>
+    <tr class="p-selectable-row">
+      <td style="min-width: auto !important;">
+        {{ user.id }}
+      </td>
+      <td class="flex justify-center items-center">
+        <button pButton pRipple  class="p-button-rounded p-button-success mr-2" (click)="showUserDetails(user)"><i class="text-3xl fa-solid fa-expand"></i></button>
+      </td>
+      <td>
+        {{ user.name }}
+      </td>
+      <td>
+        {{ user.company.name }}
+      </td>
+      <td>
+        {{ user.email }}
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="4">No users found.</td>
+    </tr>
+  </ng-template>
+</p-table>

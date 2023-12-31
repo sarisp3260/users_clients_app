@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableDataComponent } from './table-data.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
 
+import { TableDataComponent } from './table-data.component';
 
 
 @NgModule({
@@ -9,7 +12,10 @@ import { TableDataComponent } from './table-data.component';
     TableDataComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    DialogModule,
+    TableModule
   ],
   exports: [
     TableDataComponent

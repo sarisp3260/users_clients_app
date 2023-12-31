@@ -6,17 +6,20 @@ import { AppComponent } from './app.component';
 import { TableDataModule } from './table-data/table-data.module';
 
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ButtonModule,
+    DialogModule,
     TableDataModule
   ],
   providers: [],
