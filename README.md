@@ -1,8 +1,40 @@
 # AppUsers
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+✨ This Angular project is a user interface that interacts with an external API. It utilizes Tailwind CSS for styling and PrimeNG libraries for additional components.
 
-## Development server
+## Project Overview
+
+⚡️ This project focuses on providing a user-friendly interface for managing user-related data through an API. It incorporates modern frontend development practices and libraries.
+
+## Node Modules
+
+- 📦️ Installing libraries and frameworks
+```js
+npm install
+```
+or
+```js
+npm i
+```
+
+## Folder Structure
+
+🧑‍💻
+
+- **app/**
+  - **services**: Contains services handling API interactions.
+  - **models**: Includes TypeScript models for data representation.
+  - **table-data**: Houses components responsible for rendering table data.
+  - *... (other important folders)*
+
+## Development Server
+
+To launch the development server, run:
+- bash command
+- 
+  ```bash
+
+  ng serve
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
