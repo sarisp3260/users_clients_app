@@ -15,7 +15,7 @@
           <span *ngIf="selectedUser"><i class="fas fa-map-marked-alt pr-3"></i> <b>City: </b>{{selectedUser.address.city}}</span>
           <span *ngIf="selectedUser"><i class="fas fa-building pr-3"></i><b>Company: </b>{{selectedUser.company.name}}</span>
         </div>
-        <!-- <app-map-geo [geoData]="getGeoData(selectedUser)"></app-map-geo> -->
+        <!-- <app-map-geo></app-map-geo> -->
       </div>
   </div>
   <div class="p-dialog-footer flex justify-center">
@@ -42,7 +42,6 @@
       Customer List
       <span class="p-input-icon-right">
         <i class="pi pi-search"></i>
-        <!-- <input pInputText type="text" (input)="applyFilter($event, 'name', 'contains')" placeholder="Search by name" matchMode="contains"/> -->
         <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Filter" />
       </span>
     </div>
@@ -82,7 +81,10 @@
         <button pButton pRipple  class="p-button-rounded p-button-success mr-2" (click)="showUserDetails(user)"><i class="text-3xl fa-solid fa-expand"></i></button>
       </td>
       <td>
-        {{ user.name }}
+        <div class="flex justify-start items-center gap-4">
+          <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" severity="danger"></p-avatar>
+          {{ user.name }}
+        </div>
       </td>
       <td>
         {{ user.company.name }}

@@ -5,6 +5,8 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 
 import { TableDataComponent } from './table-data.component';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { TableDataComponent } from './table-data.component';
     CommonModule,
     HttpClientModule,
     DialogModule,
-    TableModule
+    TableModule,
+    AvatarModule,
+    AvatarGroupModule
   ],
   exports: [
     TableDataComponent
