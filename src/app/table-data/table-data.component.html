@@ -34,7 +34,7 @@
   [paginator]="true"
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
   [filterDelay]="0"
-  [globalFilterFields]="['name']"
+  [globalFilterFields]="['name', 'company.name', 'email']"
   responsiveLayout="scroll"
 >
   <ng-template pTemplate="caption">
@@ -42,7 +42,8 @@
       Customer List
       <span class="p-input-icon-right">
         <i class="pi pi-search"></i>
-        <input pInputText type="text" (input)="applyFilter($event, 'name', 'contains')" placeholder="Search by name" matchMode="contains"/>
+        <!-- <input pInputText type="text" (input)="applyFilter($event, 'name', 'contains')" placeholder="Search by name" matchMode="contains"/> -->
+        <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Filter" />
       </span>
     </div>
   </ng-template>

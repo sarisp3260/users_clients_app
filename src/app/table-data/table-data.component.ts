@@ -11,7 +11,7 @@ import { PrimeIcons } from 'primeng/api';
 })
 export class TableDataComponent implements OnInit {
 
-  @ViewChild('dt') dt!: Table;
+  @ViewChild(Table, {static : false}) dt!: Table;
 
   loading: boolean = false;
 
@@ -21,6 +21,12 @@ export class TableDataComponent implements OnInit {
   displayDialog: boolean = false;
 
   constructor(private UserService: UserService ) { }
+
+  ngAfterViewInit() {
+    if (this.dt) {
+      // La lógica de inicialización puede ir aquí si es necesario
+    }
+  }
 
   ngOnInit(): void {
     this.getDataList();
@@ -39,16 +45,13 @@ export class TableDataComponent implements OnInit {
         }
     });
   }
-  applyFilter($event: any, field: string, matchMode: string) {
-    let value = ($event.target as HTMLInputElement)?.value;
-    if (this.dt) {
-      this.dt.filter(value, field, matchMode);
-    }
+ 
+  applyFilterGlobal($event: any, stringVal: any) {
+    this.dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
 
   showUserDetails(user: User) {
     this.selectedUser = { ...user };
-    console.log(this.selectedUser);
     this.displayDialog = true;
   }
 
